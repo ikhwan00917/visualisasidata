@@ -1,5 +1,5 @@
 import pandas as pd
-import plotly.express as px
+import plotly.figure_factory as px
 import streamlit as st
 
 df = pd.read_excel(r"C:\IKHWAN\Tel U\SEMESTER 4\Metode Visualisasi Data\factbook2.xlsx")
