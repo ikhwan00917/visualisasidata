@@ -1,10 +1,24 @@
-import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-df = pd.read_excel(r"C:\IKHWAN\Tel U\SEMESTER 4\Metode Visualisasi Data\factbook2.xlsx")
+df = px.data.gapminder()
 
-fig = px.scatter(df, x = "GDPpercapita", y = "Lifeexpectancyatbirth",
-            size="Population", color = "Birthrate",
-            hover_name="Country", log_x = True, size_max =60)
-st.plotly_chart(fig, height = 1000, width = 1200)
+fig = px.scatter(
+    df.query("year==2007"),
+    x="gdpPercap",
+    y="lifeExp",
+    size="pop",
+    color="continent",
+    hover_name="country",
+    log_x=True,
+    size_max=60,
+)
+
+tab1, tab2 = st.tabs(["Streamlit theme (default)", "Plotly native theme"])
+with tab1:
+    # Use the Streamlit theme.
+    # This is the default. So you can also omit the theme argument.
+    st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+with tab2:
+    # Use the native Plotly theme.
+    st.plotly_chart(fig, theme=None, use_container_width=True)
