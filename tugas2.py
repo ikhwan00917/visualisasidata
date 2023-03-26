@@ -1,1 +1,1 @@
-streamlit run c:/IKHWAN/tugas2.py [ARGUMENTS]
+http://localhost:8501/
